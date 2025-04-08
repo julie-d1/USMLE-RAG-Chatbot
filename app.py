@@ -1,4 +1,4 @@
-# ── 📦 Import Required Libraries ─────────────────────────────
+# ── Import Required Libraries ─────────────────────────────
 import os
 import torch
 import warnings
@@ -13,7 +13,7 @@ from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
-# ── 🔐 Load Environment Variables ───────────────────────────
+# ── Load Environment Variables ───────────────────────────
 load_dotenv()
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -23,7 +23,7 @@ HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 if not PINECONE_API_KEY or not GOOGLE_API_KEY or not HUGGINGFACE_API_KEY:
     st.error("Missing API keys. Please check your .env configuration.")
 
-# ── 🧠 Load Medical Embedding Model ─────────────────────────
+# ── Load Medical Embedding Model ─────────────────────────
 MODEL_NAME = "abhinand/MedEmbed-large-v0.1"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=HUGGINGFACE_API_KEY)
 model = AutoModel.from_pretrained(MODEL_NAME, token=HUGGINGFACE_API_KEY)
@@ -44,7 +44,7 @@ class CustomEmbeddings:
 
 embedding_model = CustomEmbeddings()
 
-# ── 🗃️ Initialize Pinecone Vector Store ─────────────────────
+# ── Initialize Pinecone Vector Store ─────────────────────
 @st.cache_resource
 def initialize_vectorstore():
     pinecone_client = Pinecone(api_key=PINECONE_API_KEY)
@@ -55,7 +55,7 @@ def initialize_vectorstore():
         text_key="text"
     )
 
-# ── 💬 Initialize Gemini LLM ────────────────────────────────
+# ── Initialize Gemini LLM ────────────────────────────────
 @st.cache_resource
 def load_llm():
     return GoogleGenerativeAI(
@@ -63,7 +63,7 @@ def load_llm():
         api_key=GOOGLE_API_KEY
     )
 
-# ── 🧾 Prompt Construction ──────────────────────────────────
+# ── Prompt Construction ──────────────────────────────────
 def create_prompt():
     """Returns a ChatPromptTemplate with structured medical guidance."""
     system_prompt = """
@@ -105,7 +105,7 @@ Questions: {input}
         ("human", "{input}")
     ])
 
-# ── 🔄 Answer Generation Chain ───────────────────────────────
+# ── Answer Generation Chain ───────────────────────────────
 def answer_question(user_query):
     llm = load_llm()
     prompt = create_prompt()
@@ -116,7 +116,7 @@ def answer_question(user_query):
     response = retrieval_chain.invoke({"input": user_query})
     return response["answer"]
 
-# ── 🖥️ Streamlit Interface ─────────────────────────────────
+# ── Streamlit Interface ─────────────────────────────────
 def main_interface():
     st.title("🧠 USMLE Step-1 Chatbot (personal-test-1)")
     user_query = st.text_area("Ask your USMLE Step-1 question:", height=100)
@@ -125,7 +125,7 @@ def main_interface():
             response = answer_question(user_query)
             st.write(response)
 
-# ── ⚠️ Consent & Disclaimer ────────────────────────────────
+# ── Consent & Disclaimer ────────────────────────────────
 if "consent_given" not in st.session_state:
     st.session_state.consent_given = False
 
