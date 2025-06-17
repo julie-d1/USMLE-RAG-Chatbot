@@ -141,5 +141,5 @@ This chatbot is intended for **educational use only**.
 
 ## 👥 Contributors
 
-- **Julisa Delfin** – Graduate Student, DePaul University
+- **Julisa Delfin** – MS Data Science, DePaul University
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/julisadelfin/)  
