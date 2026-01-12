@@ -7,7 +7,7 @@ An AI-powered study assistant designed to support medical students preparing for
 ---
 
 ## 🚀 Overview
-
+![Web Interface](assets/ui-preview.png)
 This project is a **Generative AI application** that combines:
 
 - **LangChain** for orchestration,
