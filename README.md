@@ -7,7 +7,9 @@ An AI-powered study assistant designed to support medical students preparing for
 ---
 
 ## 🚀 Overview
-![Web Interface](assets/ui-preview.png)
+<p align="left">
+  <img src="assets/ui-main.png" width="800" alt="USMLE RAG Chatbot UI">
+</p>
 This project is a **Generative AI application** that combines:
 
 - **LangChain** for orchestration,
@@ -117,6 +119,13 @@ flowchart LR
 - "What are the risk factors for Type 2 Diabetes?"
 - "Compare and contrast Crohn’s Disease and Ulcerative Colitis."
 - "A 25-year-old man presents with fatigue and palpitations. What’s the most likely diagnosis?"
+
+---
+
+## 📊 Example Output
+<p align="center">
+  <img src="assets/ui-output.png" width="800" alt="Structured medical response">
+</p>
 
 ---
 
