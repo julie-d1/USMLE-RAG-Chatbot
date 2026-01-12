@@ -10,6 +10,7 @@ An AI-powered study assistant designed to support medical students preparing for
 <p align="left">
   <img src="assets/ui-main.png" width="800" alt="USMLE RAG Chatbot UI">
 </p>
+
 This project is a **Generative AI application** that combines:
 
 - **LangChain** for orchestration,
